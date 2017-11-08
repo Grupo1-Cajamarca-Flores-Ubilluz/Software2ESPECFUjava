@@ -31,6 +31,7 @@ public class Clientes extends javax.swing.JFrame {
         
         
         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("N| Cliente");
         modelo.addColumn("Codigo");
         modelo.addColumn("Cedula");
         modelo.addColumn("Nombres");
@@ -42,18 +43,21 @@ public class Clientes extends javax.swing.JFrame {
         
         ModeloCliente mC = new ModeloCliente();
         ArrayList<Cliente> clientes = mC.mostrarDatos();
-            
+        
+        int i=0;
+        
         for(Cliente c: clientes){
-            Object []fila = new Object[8];
-            fila[0] = c.getCod();
-            fila[1] = c.getCedula();
-            fila[2] = c.getNombres();
-            fila[3] = c.getApellidos();
-            fila[4] = c.getTelfFijo();
-            fila[5] = c.getTelfMovil();
-            fila[6] = c.getDireccion();
-            fila[7] = c.getCorreo();
-            modelo.addRow(fila);
+            Object []fila = new Object[9];
+            fila[0] = i+""; 
+            fila[1] = c.getCod();
+            fila[2] = c.getCedula();
+            fila[3] = c.getNombres();
+            fila[4] = c.getApellidos();
+            fila[5] = c.getTelfFijo();
+            fila[6] = c.getTelfMovil();
+            fila[7] = c.getDireccion();
+            fila[8] = c.getCorreo();
+            modelo.addRow(fila); i++;
         }
                 
         tblDatos.setModel(modelo);
