@@ -9,6 +9,9 @@ package com.ecu;
  *
  * @author Labs-DECC
  */
+/*productos a vender en dicho almacen son varios desde 
+material de computadoras hasta linea blanca.*/
+
 public class Producto {
     private int id;
     private String nombre;
