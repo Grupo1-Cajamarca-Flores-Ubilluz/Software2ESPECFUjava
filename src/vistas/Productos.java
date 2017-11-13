@@ -5,10 +5,10 @@
  */
 package Vistas;
 
-import almacenes_paul.Cliente;
-import almacenes_paul.ModeloCliente;
-import almacenes_paul.ModeloProducto;
-import almacenes_paul.Producto;
+import com.ecu.Cliente;
+import com.ecu.ModeloCliente;
+import com.ecu.ModeloProducto;
+import com.ecu.Producto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
