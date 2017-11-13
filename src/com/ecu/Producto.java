@@ -9,9 +9,6 @@ package com.ecu;
  *
  * @author Labs-DECC
  */
-/*productos a vender en dicho almacen son varios desde 
-material de computadoras hasta linea blanca.*/
-
 public class Producto {
     private int id;
     private String nombre;
@@ -19,19 +16,31 @@ public class Producto {
     private String marca;
     private String descripcion;
     private float precio;
+    private int cantidad;
 
     public Producto() {
     }
 
-    public Producto(int id, String nombre, String serie, String marca, String descripcion, float precio) {
+    public Producto(int id, String nombre, String serie, String marca, String descripcion, float precio, int cantidad) {
         this.id = id;
         this.nombre = nombre;
         this.serie = serie;
         this.marca = marca;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.cantidad=cantidad;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

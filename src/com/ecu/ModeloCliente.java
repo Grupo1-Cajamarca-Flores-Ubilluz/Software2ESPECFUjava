@@ -30,7 +30,7 @@ public class ModeloCliente {
         con = new Conexion();
     }
     
-    public void ingresarUsuario(Cliente c){
+    public boolean ingresarUsuario(Cliente c){
         query="insert into CLIENTE (cedula, nombres, apellidos, telfFijo, telfMovil, direccion, correo)VALUES (?,?,?,?,?,?,?);";
         
         try{
@@ -43,37 +43,43 @@ public class ModeloCliente {
             pst.setString(6, c.getDireccion());
             pst.setString(7, c.getCorreo());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Cliente ingresado correctamente");
+            return true;
+            //JOptionPane.showMessageDialog(null,"Cliente ingresado correctamente");
         }catch(SQLException ex1)
         {
             System.out.println(""+ex1.getMessage());
+            return false;
         }
     }
     
-   /* public void actualizarRegistro(String nombre, String apellido, int edad, String correo, String numCuenta){
+   public boolean actualizarRegistro(Cliente c){
      
         try {
-            int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="update usuario set "+"nombre='"+nombre+"', apellido='"+apellido+"', edad="+edad+", correo='"+correo+"', numCuenta='"+numCuenta+
-                "' where id="+cod+";";
+            //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
+            query="update CLIENTE set "+"nombres='"+c.getNombres()+"', apellidos='"+c.getApellidos()+"', telfFijo="+c.getTelfFijo()+", telfMovil='"+c.getTelfMovil()+"', direccion='"+c.getDireccion()+"', correo='"+c.getCorreo()+
+                "' where cedula='"+c.getCedula()+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(""+ex.getMessage());
+            return false;
         }
     }
     
-    public void eliminarRegistro(){
+    public boolean eliminarRegistro(String ci){
         try {
-            int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="delete from usuario where id="+cod+";";
+            //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
+            query="delete from CLIENTE where cedula='"+ci+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(""+ex.getMessage());
+            return false;
         }
     }
-    */
+    
     
     public ArrayList<Cliente> mostrarDatos(){
         ArrayList<Cliente> datos = new ArrayList<>();

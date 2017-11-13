@@ -31,8 +31,8 @@ public class ModeloProducto {
     }
     
     
-    public void ingresarUsuario(Producto p){
-        query="insert into PRODUCTO (nombre, serie, marca, descripcion, precio)VALUES (?,?,?,?,?);";
+    public boolean ingresarUsuario(Producto p){
+        query="insert into PRODUCTO (nombre, serie, marca, descripcion, precio, cantidad)VALUES (?,?,?,?,?,?);";
         
         try{
             pst=con.getConnection().prepareStatement(query);
@@ -41,42 +41,48 @@ public class ModeloProducto {
             pst.setString(3, p.getMarca());
             pst.setString(4, p.getDescripcion());
             pst.setFloat(5, p.getPrecio());
+            pst.setInt(6, p.getCantidad());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
+            return true;
+            //JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
         }catch(SQLException ex1)
         {
             System.out.println(""+ex1.getMessage());
+            return false;
         }
     }
     
-    /*
-    public void actualizarRegistro(String nombre, String apellido, int edad, String correo, String numCuenta){
+    public boolean actualizarRegistro(Producto p){
      
         try {
-            int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="update usuario set "+"nombre='"+nombre+"', apellido='"+apellido+"', edad="+edad+", correo='"+correo+"', numCuenta='"+numCuenta+
-                "' where id="+cod+";";
+            //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
+            query="update PRODUCTO set "+"serie='"+p.getSerie()+"', marca='"+p.getMarca()+"', descripcion='"+p.getDescripcion()+"', precio="+p.getPrecio()+", cantidad="+p.getCantidad()+
+                " where nombre='"+p.getNombre()+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(""+ex.getMessage());
+            return false;
         }
     }
     
-    public void eliminarRegistro(){
+    public boolean eliminarRegistro(String nomb){
         try {
-            int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="delete from usuario where id="+cod+";";
+            //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
+            query="delete from PRODUCTO where nombre='"+nomb+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             System.out.println(""+ex.getMessage());
+            return false;
         }
-    }*/
+    }
     
     public ArrayList<Producto> mostrarDatos(){
         ArrayList<Producto> datos = new ArrayList<>();
-        query="select * from producto";
+        query="select * from PRODUCTO";
         
         try{
             st=con.getConnection().createStatement();
@@ -89,6 +95,7 @@ public class ModeloProducto {
                 p.setMarca(rs.getString(4));
                 p.setDescripcion(rs.getString(5));
                 p.setPrecio(rs.getFloat(6));
+                p.setCantidad(rs.getInt(7));
                 datos.add(p);
             }
             
