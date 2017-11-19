@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ecu;
+package almacenes_paul;
 
 /**
  *
@@ -11,8 +11,12 @@ package com.ecu;
  */
 public class Venta {
     private int id;
+    private int idCliente;
     private String tipo;
     private Fecha fecha;
+    private float total;
+    private String aux;
+    private String f;
 
     public Venta() {
     }
@@ -23,6 +27,40 @@ public class Venta {
         this.fecha = fecha;
     }
 
+    public String getF() {
+        return f;
+    }
+
+    public void setF(String f) {
+        this.f = f;
+    }
+
+    
+    public String getAux() {
+        return aux;
+    }
+
+    public void setAux(String aux) {
+        this.aux = aux;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    
     public int getId() {
         return id;
     }
