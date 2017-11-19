@@ -24,7 +24,7 @@ public class ModeloCliente {
     Statement st;
     ResultSet rs;
     PreparedStatement pst;
-    //dato
+    //dato nombre2
     
     
     public ModeloCliente(){
