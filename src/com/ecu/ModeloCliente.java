@@ -24,7 +24,6 @@ public class ModeloCliente {
     Statement st;
     ResultSet rs;
     PreparedStatement pst;
-    //dato nombre2
     
     
     public ModeloCliente(){
@@ -71,7 +70,7 @@ public class ModeloCliente {
     public boolean eliminarRegistro(String ci){
         try {
             //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="delete from CLIENTE where cedula='"+ci+"';";
+            query="update CLIENTE set "+"activo="+0+" where cedula='"+ci+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -84,7 +83,7 @@ public class ModeloCliente {
     
     public ArrayList<Cliente> mostrarDatos(){
         ArrayList<Cliente> datos = new ArrayList<>();
-        query="select * from cliente";
+        query="select * from cliente where activo <> 0";
         
         try{
             st=con.getConnection().createStatement();
@@ -99,6 +98,7 @@ public class ModeloCliente {
                 c.setTelfMovil(rs.getString(6));
                 c.setDireccion(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setActivo(rs.getInt(9));
                 datos.add(c);
             }
             
