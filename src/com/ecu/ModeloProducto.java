@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package almacenes_paul;
+package com.ecu;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -67,10 +67,26 @@ public class ModeloProducto {
         }
     }
     
+    public boolean actualizarStock(int cant, int codP){
+     
+        try {
+            //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
+            query="update PRODUCTO set "+" cantidad=cantidad-"+cant+
+                " where idProducto="+codP+";";
+            pst = con.getConnection().prepareStatement(query);
+            pst.executeUpdate();
+            //JOptionPane.showMessageDialog(null,"stock actualizado correctamente");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(""+ex.getMessage());
+            return false;
+        }
+    }
+    
     public boolean eliminarRegistro(String nomb){
         try {
             //int cod= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del usuario"));
-            query="delete from PRODUCTO where nombre='"+nomb+"';";
+            query="update PRODUCTO set "+"activo="+0+" where nombre='"+nomb+"';";
             pst = con.getConnection().prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -82,7 +98,7 @@ public class ModeloProducto {
     
     public ArrayList<Producto> mostrarDatos(){
         ArrayList<Producto> datos = new ArrayList<>();
-        query="select * from PRODUCTO";
+        query="select * from PRODUCTO where activo <> 0";
         
         try{
             st=con.getConnection().createStatement();
@@ -96,6 +112,7 @@ public class ModeloProducto {
                 p.setDescripcion(rs.getString(5));
                 p.setPrecio(rs.getFloat(6));
                 p.setCantidad(rs.getInt(7));
+                p.setActivo(rs.getInt(8));
                 datos.add(p);
             }
             
