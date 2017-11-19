@@ -5,13 +5,13 @@
  */
 package Vistas;
 
-import almacenes_paul.Cliente;
-import almacenes_paul.Fecha;
-import almacenes_paul.ModeloCliente;
-import almacenes_paul.ModeloProducto;
-import almacenes_paul.ModeloVenta;
-import almacenes_paul.Producto;
-import almacenes_paul.Venta;
+import com.ecu.Cliente;
+import com.ecu.Fecha;
+import com.ecu.ModeloCliente;
+import com.ecu.ModeloProducto;
+import com.ecu.ModeloVenta;
+import com.ecu.Producto;
+import com.ecu.Venta;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
