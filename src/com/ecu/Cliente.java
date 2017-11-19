@@ -18,11 +18,12 @@ public class Cliente {
     private String telfMovil;
     private String direccion;
     private String correo;
+    private int activo;
 
     public Cliente() {
     }
 
-    public Cliente(int cod, String cedula, String nombres, String apellidos, String telfFijo, String telfMovil, String direccion, String correo) {
+    public Cliente(int cod, String cedula, String nombres, String apellidos, String telfFijo, String telfMovil, String direccion, String correo, int activo) {
         this.cod = cod;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -31,8 +32,18 @@ public class Cliente {
         this.telfMovil = telfMovil;
         this.direccion = direccion;
         this.correo = correo;
+        this.activo = activo;
     }
 
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
+    
     public int getCod() {
         return cod;
     }
