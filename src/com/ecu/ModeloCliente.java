@@ -24,6 +24,7 @@ public class ModeloCliente {
     Statement st;
     ResultSet rs;
     PreparedStatement pst;
+    //dato
     
     
     public ModeloCliente(){
